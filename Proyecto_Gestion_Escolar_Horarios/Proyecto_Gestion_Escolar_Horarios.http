@@ -1,0 +1,6 @@
+@Proyecto_Gestion_Escolar_Horarios_HostAddress = http://localhost:5074
+
+GET {{Proyecto_Gestion_Escolar_Horarios_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

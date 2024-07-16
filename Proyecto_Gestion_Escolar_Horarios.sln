@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto_Gestion_Escolar_Horarios", "Proyecto_Gestion_Escolar_Horarios\Proyecto_Gestion_Escolar_Horarios.csproj", "{59FB68AC-2BD4-4162-A52A-459F1F0DCF47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59FB68AC-2BD4-4162-A52A-459F1F0DCF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59FB68AC-2BD4-4162-A52A-459F1F0DCF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59FB68AC-2BD4-4162-A52A-459F1F0DCF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59FB68AC-2BD4-4162-A52A-459F1F0DCF47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72FE04E3-94DD-41BF-A819-4B6560266BF9}
+	EndGlobalSection
+EndGlobal

@@ -52,9 +52,9 @@ namespace Proyecto_Gestion_Escolar_Horarios
             CreateMap<HorarioDiaPutDTO, HorarioDia>().ReverseMap();
 
             // Mapeos de Inscripciones
-            CreateMap<InscripcionGetDTO, Inscripciones>().ReverseMap();
-            CreateMap<InscripcionInsertDTO, Inscripciones>().ReverseMap();
-            CreateMap<InscripcionPutDTO, Inscripciones>().ReverseMap();
+            CreateMap<InscripcionesGetDTO, Inscripciones>().ReverseMap();
+            CreateMap<InscripcionesInsertDTO, Inscripciones>().ReverseMap();
+            CreateMap<InscripcionesPutDTO, Inscripciones>().ReverseMap();
 
             // Mapeos de Profesores
             CreateMap<ProfesorGetDTO, Profesores>().ReverseMap();

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Proyecto_Gestion_Escolar_Horarios.props" />
+</Project>

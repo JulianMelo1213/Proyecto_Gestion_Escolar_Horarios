@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Gestion_Escolar_Horarios.Models.Model_Configuration;
 
 namespace Proyecto_Gestion_Escolar_Horarios.Models;
 
-public partial class GestionEstudiantesContext : DbContext
+public partial class GestionEstudiantesContext : IdentityDbContext<Usuario>
 {
     public GestionEstudiantesContext()
     {
+
     }
 
     public GestionEstudiantesContext(DbContextOptions<GestionEstudiantesContext> options)

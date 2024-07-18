@@ -145,14 +145,6 @@ INSERT INTO Inscripciones (EstudianteId, ClaseId) VALUES
 (1, 2), -- Juan Pérez inscrito en Historia
 (2, 3); -- María González inscrita en Biología
 
-INSERT INTO Usuarios (Nombre, Email, Contraseña, Rol) VALUES 
-('admin', 'admin@example.com', 'admin123', 'Administrador'),
-('Ana Martínez', 'ana.martinez@example.com', 'profesor123', 'Profesor'),
-('Luis Hernández', 'luis.hernandez@example.com', 'profesor123', 'Profesor'),
-('Sofía Jiménez', 'sofia.jimenez@example.com', 'profesor123', 'Profesor'),
-('Juan Pérez', 'juan.perez@example.com', 'estudiante123', 'Estudiante'),
-('María González', 'maria.gonzalez@example.com', 'estudiante123', 'Estudiante'),
-('Carlos Ramírez', 'carlos.ramirez@example.com', 'estudiante123', 'Estudiante');
 
 INSERT INTO HorarioDias (HorarioId, DiaId) VALUES 
 (1, 1), -- Horario 1 (Matemáticas) el Lunes

@@ -91,15 +91,7 @@ CREATE TABLE Inscripciones (
     CONSTRAINT UK_Inscripciones UNIQUE (EstudianteId, ClaseId) -- Constraint para asegurar que un estudiante no se inscriba más de una vez en la misma clase
 );
 
--- Tabla de usuarios
-CREATE TABLE Usuarios (
-    UsuarioId INT PRIMARY KEY IDENTITY,
-    Nombre NVARCHAR(100) NOT NULL,
-    Email NVARCHAR(100) NOT NULL UNIQUE,
-    Contraseña NVARCHAR(100) NOT NULL,
-    Rol NVARCHAR(50) NOT NULL, -- Administrador, Profesor, Estudiante
-    FechaRegistro DATETIME DEFAULT GETDATE() -- Marca de tiempo para la auditoría
-);
+
 
 INSERT INTO Dias (Nombre) VALUES 
 ('Lunes'),

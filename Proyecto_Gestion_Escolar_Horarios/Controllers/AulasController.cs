@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Proyecto_Gestion_Escolar_Horarios.DTO.Aula;
-using Proyecto_Gestion_Escolar_Horarios.DTO;
 using Proyecto_Gestion_Escolar_Horarios.Services.AulaServices;
 
 namespace Proyecto_Gestion_Escolar_Horarios.Controllers
@@ -22,22 +21,36 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AulaGetDTO>>> GetAulas()
         {
-            var aulas = await _aulaService.GetAllAsync();
-            return Ok(aulas);
+            try
+            {
+                var aulas = await _aulaService.GetAllAsync();
+                return Ok(aulas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
         // GET: api/Aulas/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AulaGetDTO>> GetAula(int id)
         {
-            var aula = await _aulaService.GetByIdAsync(id);
-
-            if (aula == null)
+            try
             {
-                return NotFound();
-            }
+                var aula = await _aulaService.GetByIdAsync(id);
 
-            return Ok(aula);
+                if (aula == null)
+                {
+                    return NotFound("Aula no encontrada.");
+                }
+
+                return Ok(aula);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
         // PUT: api/Aulas/5
@@ -46,7 +59,7 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
         {
             if (id != aulaDto.AulaId)
             {
-                return BadRequest();
+                return BadRequest("El ID del aula en la URL no coincide con el ID en el cuerpo de la solicitud.");
             }
 
             try
@@ -54,13 +67,17 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
                 var updatedAula = await _aulaService.UpdateAsync(id, aulaDto);
                 return Ok(updatedAula);
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
             catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
 
@@ -77,19 +94,34 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             {
                 return BadRequest(ex.Message);
             }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
         // DELETE: api/Aulas/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAula(int id)
         {
-            var deleted = await _aulaService.DeleteAsync(id);
-            if (!deleted)
+            try
             {
-                return NotFound();
-            }
+                var deleted = await _aulaService.DeleteAsync(id);
+                if (!deleted)
+                {
+                    return NotFound("Aula no encontrada.");
+                }
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
         }
     }
 }

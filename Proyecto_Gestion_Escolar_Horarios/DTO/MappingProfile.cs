@@ -28,8 +28,6 @@ namespace Proyecto_Gestion_Escolar_Horarios
 
             // Mapeos de Dia
             CreateMap<DiaGetDTO, Dia>().ReverseMap();
-            CreateMap<DiaInsertDTO, Dia>().ReverseMap();
-            CreateMap<DiaPutDTO, Dia>().ReverseMap();
 
             // Mapeos de Estudiante
             CreateMap<EstudianteGetDTO, Estudiante>().ReverseMap();

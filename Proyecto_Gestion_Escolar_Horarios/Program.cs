@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Gestion_Escolar_Horarios.Models;
 using Proyecto_Gestion_Escolar_Horarios.Services.AulaServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.DiaServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.EstudianteServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.InscripcionesServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.ProfesoresServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +19,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IAulaService, AulaService>();
+builder.Services.AddScoped<IEstudianteService, EstudianteService>();
+builder.Services.AddScoped<IProfesoresService, ProfesoresService>();
+builder.Services.AddScoped<IDiaService, DiaService>();
+builder.Services.AddScoped<IInscripcionesService, InscripcionesService>();
 
 // Configurar Identity
 builder.Services.AddIdentity<Usuario, IdentityRole>()

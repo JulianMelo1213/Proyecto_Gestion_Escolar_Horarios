@@ -1,30 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Proyecto_Gestion_Escolar_Horarios.DTO.Aula;
-using Proyecto_Gestion_Escolar_Horarios.Services.AulaServices;
+using Proyecto_Gestion_Escolar_Horarios.DTO.Profesores;
+using Proyecto_Gestion_Escolar_Horarios.Services.ProfesoresServices;
 
 namespace Proyecto_Gestion_Escolar_Horarios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AulasController : ControllerBase
+    public class ProfesoresController : ControllerBase
     {
-        private readonly IAulaService _aulaService;
+        private readonly IProfesoresService _profesoresService;
 
-        public AulasController(IAulaService aulaService)
+        public ProfesoresController(IProfesoresService profesoresService)
         {
-            _aulaService = aulaService;
+            _profesoresService = profesoresService;
         }
 
-        // GET: api/Aulas
+        // GET: api/Profesores
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AulaGetDTO>>> GetAulas()
+        public async Task<ActionResult<IEnumerable<ProfesorGetDTO>>> GetProfesores()
         {
             try
             {
-                var aulas = await _aulaService.GetAllAsync();
-                return Ok(aulas);
+                var profesores = await _profesoresService.GetAllAsync();
+                return Ok(profesores);
             }
             catch (Exception ex)
             {
@@ -32,20 +32,20 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // GET: api/Aulas/5
+        // GET: api/Profesores/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AulaGetDTO>> GetAula(int id)
+        public async Task<ActionResult<ProfesorGetDTO>> GetProfesor(int id)
         {
             try
             {
-                var aula = await _aulaService.GetByIdAsync(id);
+                var profesor = await _profesoresService.GetByIdAsync(id);
 
-                if (aula == null)
+                if (profesor == null)
                 {
-                    return NotFound("Aula no encontrada.");
+                    return NotFound("Profesor no encontrado.");
                 }
 
-                return Ok(aula);
+                return Ok(profesor);
             }
             catch (Exception ex)
             {
@@ -53,19 +53,19 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // PUT: api/Aulas/5
+        // PUT: api/Profesores/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAula(int id, AulaPutDTO aulaDto)
+        public async Task<IActionResult> PutProfesor(int id, ProfesorPutDTO profesorDto)
         {
-            if (id != aulaDto.AulaId)
+            if (id != profesorDto.ProfesorId)
             {
-                return BadRequest("El ID del aula en la URL no coincide con el ID en el cuerpo de la solicitud.");
+                return BadRequest("El ID del profesor en la URL no coincide con el ID en el cuerpo de la solicitud.");
             }
 
             try
             {
-                var updatedAula = await _aulaService.UpdateAsync(id, aulaDto);
-                return Ok(updatedAula);
+                var updatedProfesor = await _profesoresService.UpdateAsync(id, profesorDto);
+                return Ok(updatedProfesor);
             }
             catch (KeyNotFoundException ex)
             {
@@ -81,14 +81,14 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // POST: api/Aulas
+        // POST: api/Profesores
         [HttpPost]
-        public async Task<ActionResult<AulaGetDTO>> PostAula(AulaInsertDTO aulaDto)
+        public async Task<ActionResult<ProfesorGetDTO>> PostProfesor(ProfesorInsertDTO profesorDto)
         {
             try
             {
-                var createdAula = await _aulaService.CreateAsync(aulaDto);
-                return CreatedAtAction(nameof(GetAula), new { id = createdAula.AulaId }, createdAula);
+                var createdProfesor = await _profesoresService.CreateAsync(profesorDto);
+                return CreatedAtAction(nameof(GetProfesor), new { id = createdProfesor.ProfesorId }, createdProfesor);
             }
             catch (ArgumentException ex)
             {
@@ -100,16 +100,16 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // DELETE: api/Aulas/5
+        // DELETE: api/Profesores/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAula(int id)
+        public async Task<IActionResult> DeleteProfesor(int id)
         {
             try
             {
-                var deleted = await _aulaService.DeleteAsync(id);
+                var deleted = await _profesoresService.DeleteAsync(id);
                 if (!deleted)
                 {
-                    return NotFound("Aula no encontrada.");
+                    return NotFound("Profesor no encontrado.");
                 }
 
                 return NoContent();

@@ -1,30 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Proyecto_Gestion_Escolar_Horarios.DTO.Aula;
-using Proyecto_Gestion_Escolar_Horarios.Services.AulaServices;
+using Proyecto_Gestion_Escolar_Horarios.DTO.Estudiante;
+using Proyecto_Gestion_Escolar_Horarios.Services.EstudianteServices;
 
 namespace Proyecto_Gestion_Escolar_Horarios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AulasController : ControllerBase
+    public class EstudiantesController : ControllerBase
     {
-        private readonly IAulaService _aulaService;
+        private readonly IEstudianteService _estudianteService;
 
-        public AulasController(IAulaService aulaService)
+        public EstudiantesController(IEstudianteService estudianteService)
         {
-            _aulaService = aulaService;
+            _estudianteService = estudianteService;
         }
 
-        // GET: api/Aulas
+        // GET: api/Estudiantes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AulaGetDTO>>> GetAulas()
+        public async Task<ActionResult<IEnumerable<EstudianteGetDTO>>> GetEstudiantes()
         {
             try
             {
-                var aulas = await _aulaService.GetAllAsync();
-                return Ok(aulas);
+                var estudiantes = await _estudianteService.GetAllAsync();
+                return Ok(estudiantes);
             }
             catch (Exception ex)
             {
@@ -32,20 +32,20 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // GET: api/Aulas/5
+        // GET: api/Estudiantes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AulaGetDTO>> GetAula(int id)
+        public async Task<ActionResult<EstudianteGetDTO>> GetEstudiante(int id)
         {
             try
             {
-                var aula = await _aulaService.GetByIdAsync(id);
+                var estudiante = await _estudianteService.GetByIdAsync(id);
 
-                if (aula == null)
+                if (estudiante == null)
                 {
-                    return NotFound("Aula no encontrada.");
+                    return NotFound("Estudiante no encontrado.");
                 }
 
-                return Ok(aula);
+                return Ok(estudiante);
             }
             catch (Exception ex)
             {
@@ -53,19 +53,19 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // PUT: api/Aulas/5
+        // PUT: api/Estudiantes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAula(int id, AulaPutDTO aulaDto)
+        public async Task<IActionResult> PutEstudiante(int id, EstudiantePutDTO estudianteDto)
         {
-            if (id != aulaDto.AulaId)
+            if (id != estudianteDto.EstudianteId)
             {
-                return BadRequest("El ID del aula en la URL no coincide con el ID en el cuerpo de la solicitud.");
+                return BadRequest("El ID del estudiante en la URL no coincide con el ID en el cuerpo de la solicitud.");
             }
 
             try
             {
-                var updatedAula = await _aulaService.UpdateAsync(id, aulaDto);
-                return Ok(updatedAula);
+                var updatedEstudiante = await _estudianteService.UpdateAsync(id, estudianteDto);
+                return Ok(updatedEstudiante);
             }
             catch (KeyNotFoundException ex)
             {
@@ -81,14 +81,14 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // POST: api/Aulas
+        // POST: api/Estudiantes
         [HttpPost]
-        public async Task<ActionResult<AulaGetDTO>> PostAula(AulaInsertDTO aulaDto)
+        public async Task<ActionResult<EstudianteGetDTO>> PostEstudiante(EstudianteInsertDTO estudianteDto)
         {
             try
             {
-                var createdAula = await _aulaService.CreateAsync(aulaDto);
-                return CreatedAtAction(nameof(GetAula), new { id = createdAula.AulaId }, createdAula);
+                var createdEstudiante = await _estudianteService.CreateAsync(estudianteDto);
+                return CreatedAtAction(nameof(GetEstudiante), new { id = createdEstudiante.EstudianteId }, createdEstudiante);
             }
             catch (ArgumentException ex)
             {
@@ -100,16 +100,16 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             }
         }
 
-        // DELETE: api/Aulas/5
+        // DELETE: api/Estudiantes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAula(int id)
+        public async Task<IActionResult> DeleteEstudiante(int id)
         {
             try
             {
-                var deleted = await _aulaService.DeleteAsync(id);
+                var deleted = await _estudianteService.DeleteAsync(id);
                 if (!deleted)
                 {
-                    return NotFound("Aula no encontrada.");
+                    return NotFound("Estudiante no encontrado.");
                 }
 
                 return NoContent();

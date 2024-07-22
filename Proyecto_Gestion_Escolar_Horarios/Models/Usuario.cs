@@ -1,19 +1,19 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Proyecto_Gestion_Escolar_Horarios.Models;
 
-public partial class Usuario
+public partial class Usuario : IdentityUser
 {
-    public int UsuarioId { get; set; }
-
-    public string Nombre { get; set; } = null!;
-
-    public string Email { get; set; } = null!;
-
-    public string Contraseña { get; set; } = null!;
-
-    public string Rol { get; set; } = null!;
-
+    public string? Nombre { get; set; }
+    public string? Apellido { get; set; }
+    [JsonIgnore]
+    public string? Token { get; set; }
+    [JsonIgnore]
+    public string? RefreshToken { get; set; }
+    [JsonIgnore]
+    public DateTime RefreshTokenExpirationTime { get; set; }
     public DateTime? FechaRegistro { get; set; }
 }

@@ -8831,23 +8831,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\gusta\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\emill\\.nuget\\packages\\": {},
+>>>>>>> b19356c845a1f18ba8389ba12156f800c07882d9
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
       "projectName": "Proyecto_Gestion_Escolar_Horarios",
       "projectPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
       "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\emill\\Source\\Repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
+      "projectName": "Proyecto_Gestion_Escolar_Horarios",
+      "projectPath": "C:\\Users\\emill\\Source\\Repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
+      "packagesPath": "C:\\Users\\emill\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\emill\\Source\\Repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
+>>>>>>> b19356c845a1f18ba8389ba12156f800c07882d9
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\emill\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> b19356c845a1f18ba8389ba12156f800c07882d9
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8946,7 +8962,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+>>>>>>> b19356c845a1f18ba8389ba12156f800c07882d9
       }
     }
   }

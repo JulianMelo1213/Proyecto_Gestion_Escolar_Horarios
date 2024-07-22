@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0KNOuW2eD5o=",
+  "dgSpecHash": "GeTwjzyD198=",
   "success": true,
-  "projectFilePath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
+  "projectFilePath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gusta\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

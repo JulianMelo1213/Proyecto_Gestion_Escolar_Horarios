@@ -163,3 +163,6 @@ INSERT INTO HorarioAsignatura (HorarioId, DiaId, ProfesorId) VALUES
 (1, 1, 1), -- Horario 1 (Matemáticas) el Lunes por el Profesor Ana Martínez
 (2, 2, 2), -- Horario 2 (Historia) el Martes por el Profesor Luis Hernández
 (3, 3, 3); -- Horario 3 (Biología) el Miércoles por el Profesor Sofía Jiménez
+
+
+select * from Dias

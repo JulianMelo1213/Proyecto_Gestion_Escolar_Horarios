@@ -10,6 +10,7 @@ using Proyecto_Gestion_Escolar_Horarios.Services.HorarioDiaServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.InscripcionesServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.ProfesoresServices;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,11 @@ var builder = WebApplication.CreateBuilder(args);
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<GestionEstudiantesContext>(db => db.UseSqlServer(connectionString));
 builder.Services.AddLogging(builder => builder.AddConsole());
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new TimeOnlyJsonConverter());
+    });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

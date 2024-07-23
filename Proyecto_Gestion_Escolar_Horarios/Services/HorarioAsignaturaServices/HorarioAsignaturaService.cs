@@ -27,7 +27,18 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
                 .Include(h => h.Profesor)
                 .ToListAsync();
 
-            return _mapper.Map<List<HorarioAsignaturaGetDTO>>(horariosAsignaturas);
+            return horariosAsignaturas.Select(h => new HorarioAsignaturaGetDTO
+            {
+                HorarioAsignaturaId = h.HorarioAsignaturaId,
+                HorarioId = h.HorarioId,
+                DiaId = h.DiaId,
+                ProfesorId = h.ProfesorId,
+                NombreDia = h.Dia.Nombre,
+                NombreProfesor = h.Profesor.Nombre,
+                ApellidoProfesor = h.Profesor.Apellido,
+                HoraInicio = h.Horario.HoraInicio,
+                HoraFin = h.Horario.HoraFin
+            }).ToList();
         }
 
         public async Task<HorarioAsignaturaGetDTO> GetByIdAsync(int id)
@@ -38,7 +49,23 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
                 .Include(h => h.Profesor)
                 .FirstOrDefaultAsync(h => h.HorarioAsignaturaId == id);
 
-            return horarioAsignatura == null ? null : _mapper.Map<HorarioAsignaturaGetDTO>(horarioAsignatura);
+            if (horarioAsignatura == null)
+            {
+                return null;
+            }
+
+            return new HorarioAsignaturaGetDTO
+            {
+                HorarioAsignaturaId = horarioAsignatura.HorarioAsignaturaId,
+                HorarioId = horarioAsignatura.HorarioId,
+                DiaId = horarioAsignatura.DiaId,
+                ProfesorId = horarioAsignatura.ProfesorId,
+                NombreDia = horarioAsignatura.Dia.Nombre,
+                NombreProfesor = horarioAsignatura.Profesor.Nombre,
+                ApellidoProfesor = horarioAsignatura.Profesor.Apellido,
+                HoraInicio = horarioAsignatura.Horario.HoraInicio,
+                HoraFin = horarioAsignatura.Horario.HoraFin
+            };
         }
 
         public async Task<HorarioAsignaturaGetDTO> CreateAsync(HorarioAsignaturaInsertDTO horarioAsignaturaDto)
@@ -63,7 +90,7 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
 
             _context.HorarioAsignaturas.Add(horarioAsignatura);
             await _context.SaveChangesAsync();
-            return _mapper.Map<HorarioAsignaturaGetDTO>(horarioAsignatura);
+            return await GetByIdAsync(horarioAsignatura.HorarioAsignaturaId);
         }
 
         public async Task<HorarioAsignaturaGetDTO> UpdateAsync(int id, HorarioAsignaturaPutDTO horarioAsignaturaDto)
@@ -100,7 +127,7 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
             _context.Entry(existingHorarioAsignatura).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return _mapper.Map<HorarioAsignaturaGetDTO>(existingHorarioAsignatura);
+            return await GetByIdAsync(existingHorarioAsignatura.HorarioAsignaturaId);
         }
 
         public async Task<bool> DeleteAsync(int id)

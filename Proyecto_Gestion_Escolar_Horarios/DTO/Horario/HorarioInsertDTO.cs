@@ -14,9 +14,9 @@ namespace Proyecto_Gestion_Escolar_Horarios.DTO.Horario
         public int DiaId { get; set; }
 
         [Required(ErrorMessage = "El campo HoraInicio es obligatorio.")]
-        public TimeOnly HoraInicio { get; set; }
+        public string HoraInicio { get; set; }  // Usar string en lugar de TimeOnly
 
         [Required(ErrorMessage = "El campo HoraFin es obligatorio.")]
-        public TimeOnly HoraFin { get; set; }
+        public string HoraFin { get; set; }  // Usar string en lugar de TimeOnly
     }
 }

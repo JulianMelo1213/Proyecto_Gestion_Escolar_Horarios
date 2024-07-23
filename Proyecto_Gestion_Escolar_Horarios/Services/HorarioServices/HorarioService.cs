@@ -70,16 +70,23 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices
                 FechaRegistro = horario.FechaRegistro
             };
         }
+
         public async Task<HorarioGetDTO> CreateAsync(HorarioInsertDTO horarioDto)
         {
-            var horario = _mapper.Map<Horario>(horarioDto);
+            var horario = new Horario
+            {
+                ClaseId = horarioDto.ClaseId,
+                AulaId = horarioDto.AulaId,
+                DiaId = horarioDto.DiaId,
+                HoraInicio = TimeOnly.Parse(horarioDto.HoraInicio),  // Convertir de string a TimeOnly
+                HoraFin = TimeOnly.Parse(horarioDto.HoraFin),  // Convertir de string a TimeOnly
+                FechaRegistro = DateTime.Now
+            };
 
             if (await _context.Horarios.AnyAsync(h => h.ClaseId == horario.ClaseId && h.AulaId == horario.AulaId && h.DiaId == horario.DiaId && h.HoraInicio == horario.HoraInicio && h.HoraFin == horario.HoraFin))
             {
                 throw new ArgumentException("Ya existe un horario con la misma clase, aula, día y horas de inicio y fin.");
             }
-
-            horario.FechaRegistro = DateTime.Now;
 
             _context.Horarios.Add(horario);
             await _context.SaveChangesAsync();
@@ -94,12 +101,16 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices
                 throw new KeyNotFoundException();
             }
 
-            if (await _context.Horarios.AnyAsync(h => h.ClaseId == horarioDto.ClaseId && h.AulaId == horarioDto.AulaId && h.DiaId == horarioDto.DiaId && h.HoraInicio == horarioDto.HoraInicio && h.HoraFin == horarioDto.HoraFin && h.HorarioId != id))
+            if (await _context.Horarios.AnyAsync(h => h.ClaseId == horarioDto.ClaseId && h.AulaId == horarioDto.AulaId && h.DiaId == horarioDto.DiaId && h.HoraInicio == TimeOnly.Parse(horarioDto.HoraInicio) && h.HoraFin == TimeOnly.Parse(horarioDto.HoraFin) && h.HorarioId != id))
             {
                 throw new ArgumentException("Ya existe un horario con la misma clase, aula, día y horas de inicio y fin.");
             }
 
-            _mapper.Map(horarioDto, existingHorario);
+            existingHorario.ClaseId = horarioDto.ClaseId;
+            existingHorario.AulaId = horarioDto.AulaId;
+            existingHorario.DiaId = horarioDto.DiaId;
+            existingHorario.HoraInicio = TimeOnly.Parse(horarioDto.HoraInicio);  // Convertir de string a TimeOnly
+            existingHorario.HoraFin = TimeOnly.Parse(horarioDto.HoraFin);  // Convertir de string a TimeOnly
             existingHorario.FechaRegistro = DateTime.Now;
 
             _context.Entry(existingHorario).State = EntityState.Modified;

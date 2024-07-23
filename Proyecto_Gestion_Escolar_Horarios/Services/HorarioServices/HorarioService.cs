@@ -22,16 +22,54 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices
 
         public async Task<IEnumerable<HorarioGetDTO>> GetAllAsync()
         {
-            var horarios = await _context.Horarios.ToListAsync();
-            return _mapper.Map<List<HorarioGetDTO>>(horarios);
+            var horarios = await _context.Horarios
+                .Include(h => h.Clase)
+                .Include(h => h.Aula)
+                .Include(h => h.Dia)
+                .ToListAsync();
+
+            return horarios.Select(h => new HorarioGetDTO
+            {
+                HorarioId = h.HorarioId,
+                ClaseId = h.ClaseId,
+                NombreClase = h.Clase.Nombre,
+                AulaId = h.AulaId,
+                NombreAula = h.Aula.Nombre,
+                DiaId = h.DiaId,
+                NombreDia = h.Dia.Nombre,
+                HoraInicio = h.HoraInicio,
+                HoraFin = h.HoraFin,
+                FechaRegistro = h.FechaRegistro
+            }).ToList();
         }
 
         public async Task<HorarioGetDTO> GetByIdAsync(int id)
         {
-            var horario = await _context.Horarios.FindAsync(id);
-            return horario == null ? null : _mapper.Map<HorarioGetDTO>(horario);
-        }
+            var horario = await _context.Horarios
+                .Include(h => h.Clase)
+                .Include(h => h.Aula)
+                .Include(h => h.Dia)
+                .FirstOrDefaultAsync(h => h.HorarioId == id);
 
+            if (horario == null)
+            {
+                return null;
+            }
+
+            return new HorarioGetDTO
+            {
+                HorarioId = horario.HorarioId,
+                ClaseId = horario.ClaseId,
+                NombreClase = horario.Clase.Nombre,
+                AulaId = horario.AulaId,
+                NombreAula = horario.Aula.Nombre,
+                DiaId = horario.DiaId,
+                NombreDia = horario.Dia.Nombre,
+                HoraInicio = horario.HoraInicio,
+                HoraFin = horario.HoraFin,
+                FechaRegistro = horario.FechaRegistro
+            };
+        }
         public async Task<HorarioGetDTO> CreateAsync(HorarioInsertDTO horarioDto)
         {
             var horario = _mapper.Map<Horario>(horarioDto);

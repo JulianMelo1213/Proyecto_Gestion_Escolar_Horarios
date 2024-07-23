@@ -4,10 +4,10 @@ namespace Proyecto_Gestion_Escolar_Horarios.DTO.HorarioDia
 {
     public class HorarioDiaInsertDTO
     {
-        [Required]
+        [Required(ErrorMessage = "El ID del horario es obligatorio.")]
         public int HorarioId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El ID del día es obligatorio.")]
         public int DiaId { get; set; }
     }
 }

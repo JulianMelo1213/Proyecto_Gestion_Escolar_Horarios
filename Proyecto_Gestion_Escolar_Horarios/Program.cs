@@ -2,8 +2,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Gestion_Escolar_Horarios.Models;
 using Proyecto_Gestion_Escolar_Horarios.Services.AulaServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.ClaseServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.DiaServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.EstudianteServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.HorarioDiaServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.InscripcionesServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.ProfesoresServices;
 
@@ -23,6 +27,10 @@ builder.Services.AddScoped<IEstudianteService, EstudianteService>();
 builder.Services.AddScoped<IProfesoresService, ProfesoresService>();
 builder.Services.AddScoped<IDiaService, DiaService>();
 builder.Services.AddScoped<IInscripcionesService, InscripcionesService>();
+builder.Services.AddScoped<IHorarioService, HorarioService>();
+builder.Services.AddScoped<IClaseService, ClaseService>();
+builder.Services.AddScoped<IHorarioAsignaturaService, HorarioAsignaturaService>();
+builder.Services.AddScoped<IHorarioDiaService, HorarioDiaService>();
 
 // Configurar Identity
 builder.Services.AddIdentity<Usuario, IdentityRole>()

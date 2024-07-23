@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emill\\source\\repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj": {}
+    "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emill\\source\\repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj": {
+    "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emill\\source\\repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
+        "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
         "projectName": "Proyecto_Gestion_Escolar_Horarios",
-        "projectPath": "C:\\Users\\emill\\source\\repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
-        "packagesPath": "C:\\Users\\emill\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emill\\source\\repos\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
+        "projectPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
+        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\emill\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -116,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

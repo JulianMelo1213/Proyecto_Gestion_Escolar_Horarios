@@ -82,6 +82,8 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
         }
 
         // POST: api/Inscripciones
+        // Controladores/InscripcionesController.cs
+
         [HttpPost]
         public async Task<ActionResult<InscripcionesGetDTO>> PostInscripcion(InscripcionesInsertDTO inscripcionesDto)
         {
@@ -99,6 +101,7 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
+
 
         // DELETE: api/Inscripciones/5
         [HttpDelete("{id}")]

@@ -26,7 +26,17 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioDiaServices
                 .Include(h => h.Horario)
                 .ToListAsync();
 
-            return _mapper.Map<List<HorarioDiaGetDTO>>(horariosDias);
+            return horariosDias.Select(hd => new HorarioDiaGetDTO
+            {
+                HorarioDiaId = hd.HorarioDiaId,
+                HorarioId = hd.HorarioId,
+                DiaId = hd.DiaId,
+                NombreDia = hd.Dia.Nombre,
+                HoraInicio = hd.Horario.HoraInicio,
+                HoraFin = hd.Horario.HoraFin,
+                ClaseId = hd.Horario.ClaseId,
+                AulaId = hd.Horario.AulaId
+            }).ToList();
         }
 
         public async Task<HorarioDiaGetDTO> GetByIdAsync(int id)
@@ -36,7 +46,22 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioDiaServices
                 .Include(h => h.Horario)
                 .FirstOrDefaultAsync(h => h.HorarioDiaId == id);
 
-            return horarioDia == null ? null : _mapper.Map<HorarioDiaGetDTO>(horarioDia);
+            if (horarioDia == null)
+            {
+                return null;
+            }
+
+            return new HorarioDiaGetDTO
+            {
+                HorarioDiaId = horarioDia.HorarioDiaId,
+                HorarioId = horarioDia.HorarioId,
+                DiaId = horarioDia.DiaId,
+                NombreDia = horarioDia.Dia.Nombre,
+                HoraInicio = horarioDia.Horario.HoraInicio,
+                HoraFin = horarioDia.Horario.HoraFin,
+                ClaseId = horarioDia.Horario.ClaseId,
+                AulaId = horarioDia.Horario.AulaId
+            };
         }
 
         public async Task<HorarioDiaGetDTO> CreateAsync(HorarioDiaInsertDTO horarioDiaDto)
@@ -56,7 +81,23 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioDiaServices
 
             _context.HorarioDias.Add(horarioDia);
             await _context.SaveChangesAsync();
-            return _mapper.Map<HorarioDiaGetDTO>(horarioDia);
+
+            var createdHorarioDia = await _context.HorarioDias
+                .Include(h => h.Dia)
+                .Include(h => h.Horario)
+                .FirstOrDefaultAsync(h => h.HorarioDiaId == horarioDia.HorarioDiaId);
+
+            return new HorarioDiaGetDTO
+            {
+                HorarioDiaId = createdHorarioDia.HorarioDiaId,
+                HorarioId = createdHorarioDia.HorarioId,
+                DiaId = createdHorarioDia.DiaId,
+                NombreDia = createdHorarioDia.Dia.Nombre,
+                HoraInicio = createdHorarioDia.Horario.HoraInicio,
+                HoraFin = createdHorarioDia.Horario.HoraFin,
+                ClaseId = createdHorarioDia.Horario.ClaseId,
+                AulaId = createdHorarioDia.Horario.AulaId
+            };
         }
 
         public async Task<HorarioDiaGetDTO> UpdateAsync(int id, HorarioDiaPutDTO horarioDiaDto)
@@ -87,7 +128,17 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioDiaServices
             _context.Entry(existingHorarioDia).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return _mapper.Map<HorarioDiaGetDTO>(existingHorarioDia);
+            return new HorarioDiaGetDTO
+            {
+                HorarioDiaId = existingHorarioDia.HorarioDiaId,
+                HorarioId = existingHorarioDia.HorarioId,
+                DiaId = existingHorarioDia.DiaId,
+                NombreDia = existingHorarioDia.Dia.Nombre,
+                HoraInicio = existingHorarioDia.Horario.HoraInicio,
+                HoraFin = existingHorarioDia.Horario.HoraFin,
+                ClaseId = existingHorarioDia.Horario.ClaseId,
+                AulaId = existingHorarioDia.Horario.AulaId
+            };
         }
 
         public async Task<bool> DeleteAsync(int id)

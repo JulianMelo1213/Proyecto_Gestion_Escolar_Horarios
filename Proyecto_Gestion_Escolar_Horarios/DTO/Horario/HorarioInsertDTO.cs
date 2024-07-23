@@ -4,19 +4,19 @@ namespace Proyecto_Gestion_Escolar_Horarios.DTO.Horario
 {
     public class HorarioInsertDTO
     {
-        [Required]
+        [Required(ErrorMessage = "El campo ClaseId es obligatorio.")]
         public int ClaseId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo AulaId es obligatorio.")]
         public int AulaId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo DiaId es obligatorio.")]
         public int DiaId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo HoraInicio es obligatorio.")]
         public TimeOnly HoraInicio { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo HoraFin es obligatorio.")]
         public TimeOnly HoraFin { get; set; }
     }
 }

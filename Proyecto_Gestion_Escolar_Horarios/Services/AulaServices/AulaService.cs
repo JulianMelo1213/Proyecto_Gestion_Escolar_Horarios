@@ -74,7 +74,7 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.AulaServices
             var aula = await _context.Aulas.FindAsync(id);
             if (aula == null)
             {
-                throw new KeyNotFoundException();
+                return false;
             }
 
             _context.Aulas.Remove(aula);

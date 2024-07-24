@@ -89,11 +89,20 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
             }
 
             var horario = await _context.Horarios.FindAsync(horarioAsignaturaDto.HorarioId);
+
             if (await _context.HorarioAsignaturas.AnyAsync(h => h.ProfesorId == horarioAsignaturaDto.ProfesorId && h.DiaId == horarioAsignaturaDto.DiaId &&
                 ((h.Horario.HoraInicio >= horarioAsignaturaDto.HoraInicio && h.Horario.HoraInicio < horarioAsignaturaDto.HoraFin) ||
                 (h.Horario.HoraFin > horarioAsignaturaDto.HoraInicio && h.Horario.HoraFin <= horarioAsignaturaDto.HoraFin))))
             {
                 throw new ArgumentException("El profesor ya tiene una clase asignada en ese horario.");
+            }
+
+            // Nueva validación
+            if (await _context.HorarioAsignaturas.AnyAsync(h => h.Horario.AulaId == horario.AulaId && h.DiaId == horarioAsignaturaDto.DiaId &&
+                ((h.Horario.HoraInicio >= horario.HoraInicio && h.Horario.HoraInicio < horario.HoraFin) ||
+                (h.Horario.HoraFin > horario.HoraInicio && h.Horario.HoraFin <= horario.HoraFin))))
+            {
+                throw new ArgumentException("Ya hay una clase asignada en el mismo aula, día y horario.");
             }
 
             _context.HorarioAsignaturas.Add(horarioAsignatura);
@@ -131,11 +140,20 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
             }
 
             var horario = await _context.Horarios.FindAsync(horarioAsignaturaDto.HorarioId);
+
             if (await _context.HorarioAsignaturas.AnyAsync(h => h.ProfesorId == horarioAsignaturaDto.ProfesorId && h.DiaId == horarioAsignaturaDto.DiaId && h.HorarioAsignaturaId != id &&
                 ((h.Horario.HoraInicio >= horarioAsignaturaDto.HoraInicio && h.Horario.HoraInicio < horarioAsignaturaDto.HoraFin) ||
                 (h.Horario.HoraFin > horarioAsignaturaDto.HoraInicio && h.Horario.HoraFin <= horarioAsignaturaDto.HoraFin))))
             {
                 throw new ArgumentException("El profesor ya tiene una clase asignada en ese horario.");
+            }
+
+            // Nueva validación
+            if (await _context.HorarioAsignaturas.AnyAsync(h => h.Horario.AulaId == horario.AulaId && h.DiaId == horarioAsignaturaDto.DiaId && h.HorarioAsignaturaId != id &&
+                ((h.Horario.HoraInicio >= horario.HoraInicio && h.Horario.HoraInicio < horario.HoraFin) ||
+                (h.Horario.HoraFin > horario.HoraInicio && h.Horario.HoraFin <= horario.HoraFin))))
+            {
+                throw new ArgumentException("Ya hay una clase asignada en el mismo aula, día y horario.");
             }
 
             _mapper.Map(horarioAsignaturaDto, existingHorarioAsignatura);

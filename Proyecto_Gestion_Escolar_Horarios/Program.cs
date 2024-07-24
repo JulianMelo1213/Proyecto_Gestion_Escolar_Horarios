@@ -29,6 +29,16 @@ builder.Services.AddIdentity<Usuario, IdentityRole>()
     .AddEntityFrameworkStores<GestionEstudiantesContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddCors(opciones =>
+{
+    opciones.AddPolicy("AllowAllOrigins", app =>
+    {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,6 +47,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAllOrigins");
+
 
 app.UseAuthorization();
 

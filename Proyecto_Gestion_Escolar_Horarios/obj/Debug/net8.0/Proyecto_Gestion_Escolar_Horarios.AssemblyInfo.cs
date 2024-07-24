@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Proyecto_Gestion_Escolar_Horarios")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23945d54612e755573add1c044d9e57528220a8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b66d7082803e859fa2b799e4eabe0278471285e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Proyecto_Gestion_Escolar_Horarios")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Proyecto_Gestion_Escolar_Horarios")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

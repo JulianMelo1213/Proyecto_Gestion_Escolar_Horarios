@@ -12,5 +12,8 @@ namespace Proyecto_Gestion_Escolar_Horarios.DTO.HorarioAsignatura
 
         [Required(ErrorMessage = "El ID del profesor es obligatorio.")]
         public int ProfesorId { get; set; }
+
+        public TimeOnly HoraInicio { get; set; }
+        public TimeOnly HoraFin { get; set; }
     }
 }

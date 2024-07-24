@@ -110,7 +110,9 @@ builder.Services.AddIdentity<Usuario, IdentityRole>()
     .AddEntityFrameworkStores<GestionEstudiantesContext>()
     .AddDefaultTokenProviders();
 
+
 //Permitir acceso desde el frontend
+
 builder.Services.AddCors(opciones =>
 {
     opciones.AddPolicy("AllowAllOrigins", app =>

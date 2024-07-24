@@ -39,6 +39,8 @@ public partial class GestionEstudiantesContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
+    public virtual DbSet<Reporte> Reportes { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("name=DefaultConnection");
 

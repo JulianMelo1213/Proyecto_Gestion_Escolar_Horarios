@@ -47,6 +47,26 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "9605affa-cde1-4e10-b484-b5d91bb1a8ce",
+                            Name = "Administrador",
+                            NormalizedName = "ADMINISTRADOR"
+                        },
+                        new
+                        {
+                            Id = "2c73c082-00ac-4987-a9dc-1f23f0417fa7",
+                            Name = "Estudiante",
+                            NormalizedName = "ESTUDIANTE"
+                        },
+                        new
+                        {
+                            Id = "7eeebabf-443d-4cff-9888-903755d7ece9",
+                            Name = "Profesor",
+                            NormalizedName = "PROFESOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -436,6 +456,26 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                         .IsUnique();
 
                     b.ToTable("Profesores");
+                });
+
+            modelBuilder.Entity("Proyecto_Gestion_Escolar_Horarios.Models.Reporte", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reportes");
                 });
 
             modelBuilder.Entity("Proyecto_Gestion_Escolar_Horarios.Models.Usuario", b =>

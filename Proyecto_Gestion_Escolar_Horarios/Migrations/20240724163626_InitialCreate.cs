@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Proyecto_Gestion_Escolar_Horarios.Migrations
 {
     /// <inheritdoc />
@@ -115,6 +117,20 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK__Profesor__4DF3F0C8946A89C7", x => x.ProfesorId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reportes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cantidad = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reportes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -356,6 +372,16 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                         principalColumn: "HorarioId");
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "2c73c082-00ac-4987-a9dc-1f23f0417fa7", null, "Estudiante", "ESTUDIANTE" },
+                    { "7eeebabf-443d-4cff-9888-903755d7ece9", null, "Profesor", "PROFESOR" },
+                    { "9605affa-cde1-4e10-b484-b5d91bb1a8ce", null, "Administrador", "ADMINISTRADOR" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -496,6 +522,9 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
 
             migrationBuilder.DropTable(
                 name: "Inscripciones");
+
+            migrationBuilder.DropTable(
+                name: "Reportes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

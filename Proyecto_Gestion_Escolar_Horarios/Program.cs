@@ -15,6 +15,7 @@ using Proyecto_Gestion_Escolar_Horarios.Services.HorarioDiaServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.InscripcionesServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.ProfesoresServices;
+using Proyecto_Gestion_Escolar_Horarios.Services.ReporteServices;
 using Proyecto_Gestion_Escolar_Horarios.Services.TokenServices;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -102,6 +103,7 @@ builder.Services.AddScoped<IHorarioDiaService, HorarioDiaService>();
 builder.Services.AddScoped<UserManager<Usuario>>();
 builder.Services.AddScoped<SignInManager<Usuario>>();
 builder.Services.AddScoped<ClaimsHelper>();
+builder.Services.AddScoped<IReporteService, ReporteService>();
 // builder.Services.AddScoped<ITokenService, TokenService>();
 
 

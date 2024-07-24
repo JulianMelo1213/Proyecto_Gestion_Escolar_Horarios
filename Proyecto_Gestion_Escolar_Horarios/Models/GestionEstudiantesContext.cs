@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Gestion_Escolar_Horarios.Models.Model_Configuration;
@@ -54,9 +55,26 @@ public partial class GestionEstudiantesContext : IdentityDbContext<Usuario>
         modelBuilder.ApplyConfiguration(new InscripcionesConfiguration());
         modelBuilder.ApplyConfiguration(new ProfesoresConfiguration());
         modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+        List<IdentityRole> roles = new List<IdentityRole>{
+                new IdentityRole{
+                    Name = "Administrador",
+                    NormalizedName = "ADMINISTRADOR"
+                },
+                new IdentityRole{
+                    Name = "Estudiante",
+                    NormalizedName = "ESTUDIANTE"
+                },
+        new IdentityRole{
+                    Name = "Profesor",
+                    NormalizedName = "PROFESOR"
+                }
+            };
+        modelBuilder.Entity<IdentityRole>().HasData(roles);
 
         OnModelCreatingPartial(modelBuilder);
     }
+
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -42,10 +42,9 @@ builder.Services.AddIdentity<Usuario, IdentityRole>()
     .AddEntityFrameworkStores<GestionEstudiantesContext>()
     .AddDefaultTokenProviders();
 
-<<<<<<< HEAD
-=======
+
 //Permitir acceso desde el frontend
->>>>>>> 15372a4677aacd472b5333d9e82cd7bdd2e3ccbc
+
 builder.Services.AddCors(opciones =>
 {
     opciones.AddPolicy("AllowAllOrigins", app =>
@@ -67,10 +66,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowAllOrigins");
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 15372a4677aacd472b5333d9e82cd7bdd2e3ccbc
 app.UseAuthorization();
 
 app.MapControllers();

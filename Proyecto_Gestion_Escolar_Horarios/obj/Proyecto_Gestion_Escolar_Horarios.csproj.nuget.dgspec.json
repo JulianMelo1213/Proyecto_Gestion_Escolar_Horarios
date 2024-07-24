@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj": {}
   },
   "projects": {
@@ -13,26 +12,13 @@
         "projectPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
         "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
-=======
-    "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
-        "projectName": "Proyecto_Gestion_Escolar_Horarios",
-        "projectPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
-        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
->>>>>>> 15372a4677aacd472b5333d9e82cd7bdd2e3ccbc
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
-<<<<<<< HEAD
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-=======
->>>>>>> 15372a4677aacd472b5333d9e82cd7bdd2e3ccbc
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -130,11 +116,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
->>>>>>> 15372a4677aacd472b5333d9e82cd7bdd2e3ccbc
         }
       }
     }

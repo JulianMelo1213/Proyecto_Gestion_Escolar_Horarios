@@ -151,7 +151,7 @@ INSERT INTO HorarioAsignatura (HorarioId, DiaId, ProfesorId) VALUES
 
 
 select * from Dias
-select * from HorarioDias
+select * from Horarios
 
 DELETE FROM HorarioDias;
 DBCC CHECKIDENT ('HorarioDias', RESEED, 0);

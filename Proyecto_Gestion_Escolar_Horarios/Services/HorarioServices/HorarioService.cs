@@ -78,14 +78,17 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices
                 ClaseId = horarioDto.ClaseId,
                 AulaId = horarioDto.AulaId,
                 DiaId = horarioDto.DiaId,
-                HoraInicio = TimeOnly.Parse(horarioDto.HoraInicio),  // Convertir de string a TimeOnly
-                HoraFin = TimeOnly.Parse(horarioDto.HoraFin),  // Convertir de string a TimeOnly
+                HoraInicio = TimeOnly.Parse(horarioDto.HoraInicio),
+                HoraFin = TimeOnly.Parse(horarioDto.HoraFin),
                 FechaRegistro = DateTime.Now
             };
 
-            if (await _context.Horarios.AnyAsync(h => h.ClaseId == horario.ClaseId && h.AulaId == horario.AulaId && h.DiaId == horario.DiaId && h.HoraInicio == horario.HoraInicio && h.HoraFin == horario.HoraFin))
+            if (await _context.Horarios.AnyAsync(h =>
+                h.AulaId == horario.AulaId && h.DiaId == horario.DiaId &&
+                ((h.HoraInicio < horario.HoraFin && h.HoraInicio >= horario.HoraInicio) ||
+                (h.HoraFin > horario.HoraInicio && h.HoraFin <= horario.HoraFin))))
             {
-                throw new ArgumentException("Ya existe un horario con la misma clase, aula, día y horas de inicio y fin.");
+                throw new ArgumentException("Ya existe un horario en el mismo aula, día y hora.");
             }
 
             _context.Horarios.Add(horario);
@@ -101,16 +104,20 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices
                 throw new KeyNotFoundException();
             }
 
-            if (await _context.Horarios.AnyAsync(h => h.ClaseId == horarioDto.ClaseId && h.AulaId == horarioDto.AulaId && h.DiaId == horarioDto.DiaId && h.HoraInicio == TimeOnly.Parse(horarioDto.HoraInicio) && h.HoraFin == TimeOnly.Parse(horarioDto.HoraFin) && h.HorarioId != id))
+            if (await _context.Horarios.AnyAsync(h =>
+                h.AulaId == horarioDto.AulaId && h.DiaId == horarioDto.DiaId &&
+                ((h.HoraInicio < TimeOnly.Parse(horarioDto.HoraFin) && h.HoraInicio >= TimeOnly.Parse(horarioDto.HoraInicio)) ||
+                (h.HoraFin > TimeOnly.Parse(horarioDto.HoraInicio) && h.HoraFin <= TimeOnly.Parse(horarioDto.HoraFin))) &&
+                h.HorarioId != id))
             {
-                throw new ArgumentException("Ya existe un horario con la misma clase, aula, día y horas de inicio y fin.");
+                throw new ArgumentException("Ya existe un horario en el mismo aula, día y hora.");
             }
 
             existingHorario.ClaseId = horarioDto.ClaseId;
             existingHorario.AulaId = horarioDto.AulaId;
             existingHorario.DiaId = horarioDto.DiaId;
-            existingHorario.HoraInicio = TimeOnly.Parse(horarioDto.HoraInicio);  // Convertir de string a TimeOnly
-            existingHorario.HoraFin = TimeOnly.Parse(horarioDto.HoraFin);  // Convertir de string a TimeOnly
+            existingHorario.HoraInicio = TimeOnly.Parse(horarioDto.HoraInicio);
+            existingHorario.HoraFin = TimeOnly.Parse(horarioDto.HoraFin);
             existingHorario.FechaRegistro = DateTime.Now;
 
             _context.Entry(existingHorario).State = EntityState.Modified;
@@ -132,4 +139,6 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioServices
             return true;
         }
     }
+
 }
+

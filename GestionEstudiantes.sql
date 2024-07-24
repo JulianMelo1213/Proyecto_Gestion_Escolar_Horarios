@@ -149,12 +149,9 @@ INSERT INTO HorarioAsignatura (HorarioId, DiaId, ProfesorId) VALUES
 (3, 3, 3); -- Horario 3 (Biología) el Miércoles por el Profesor Sofía Jiménez
 
 
-<<<<<<< HEAD
+
 select * from Dias
-=======
 select * from HorarioDias
 
 DELETE FROM HorarioDias;
 DBCC CHECKIDENT ('HorarioDias', RESEED, 0);
-
->>>>>>> 15372a4677aacd472b5333d9e82cd7bdd2e3ccbc

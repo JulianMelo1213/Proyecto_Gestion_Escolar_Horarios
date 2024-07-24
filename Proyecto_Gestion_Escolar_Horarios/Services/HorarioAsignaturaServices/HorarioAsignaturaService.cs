@@ -88,6 +88,14 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
                 throw new ArgumentException("El ProfesorId proporcionado no existe.");
             }
 
+            var horario = await _context.Horarios.FindAsync(horarioAsignaturaDto.HorarioId);
+            if (await _context.HorarioAsignaturas.AnyAsync(h => h.ProfesorId == horarioAsignaturaDto.ProfesorId && h.DiaId == horarioAsignaturaDto.DiaId &&
+                ((h.Horario.HoraInicio >= horarioAsignaturaDto.HoraInicio && h.Horario.HoraInicio < horarioAsignaturaDto.HoraFin) ||
+                (h.Horario.HoraFin > horarioAsignaturaDto.HoraInicio && h.Horario.HoraFin <= horarioAsignaturaDto.HoraFin))))
+            {
+                throw new ArgumentException("El profesor ya tiene una clase asignada en ese horario.");
+            }
+
             _context.HorarioAsignaturas.Add(horarioAsignatura);
             await _context.SaveChangesAsync();
             return await GetByIdAsync(horarioAsignatura.HorarioAsignaturaId);
@@ -120,6 +128,14 @@ namespace Proyecto_Gestion_Escolar_Horarios.Services.HorarioAsignaturaServices
             if (!await _context.Profesores.AnyAsync(p => p.ProfesorId == horarioAsignaturaDto.ProfesorId))
             {
                 throw new ArgumentException("El ProfesorId proporcionado no existe.");
+            }
+
+            var horario = await _context.Horarios.FindAsync(horarioAsignaturaDto.HorarioId);
+            if (await _context.HorarioAsignaturas.AnyAsync(h => h.ProfesorId == horarioAsignaturaDto.ProfesorId && h.DiaId == horarioAsignaturaDto.DiaId && h.HorarioAsignaturaId != id &&
+                ((h.Horario.HoraInicio >= horarioAsignaturaDto.HoraInicio && h.Horario.HoraInicio < horarioAsignaturaDto.HoraFin) ||
+                (h.Horario.HoraFin > horarioAsignaturaDto.HoraInicio && h.Horario.HoraFin <= horarioAsignaturaDto.HoraFin))))
+            {
+                throw new ArgumentException("El profesor ya tiene una clase asignada en ese horario.");
             }
 
             _mapper.Map(horarioAsignaturaDto, existingHorarioAsignatura);

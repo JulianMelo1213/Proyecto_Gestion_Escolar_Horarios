@@ -16,14 +16,78 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
         private readonly UserManager<Usuario> userManager;
         private readonly ITokenService tokenService;
         private readonly SignInManager<Usuario> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public UsuarioController(UserManager<Usuario> userManager, ITokenService tokenService, SignInManager<Usuario> signInManager)
+        public UsuarioController(UserManager<Usuario> userManager, ITokenService tokenService, SignInManager<Usuario> signInManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.tokenService = tokenService;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
         }
 
+        [HttpPost("registro")]
+        public async Task<IActionResult> Registro([FromBody] RegistroDTO registroDTO)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var usuario = new Usuario
+                {
+                    UserName = registroDTO.NombreUsuario,
+                    Nombre = registroDTO.Nombre,
+                    Apellido = registroDTO.Apellido,
+                    Email = registroDTO.CorreoElectronico,
+                };
+
+                var usuarioCreado = await userManager.CreateAsync(usuario, registroDTO.Password);
+                if (usuarioCreado.Succeeded)
+                {
+                    var rolExiste = await roleManager.RoleExistsAsync(registroDTO.Rol);
+                    if (!rolExiste)
+                    {
+                        return BadRequest("El rol especificado no existe");
+                    }
+
+                    var roleResult = await userManager.AddToRoleAsync(usuario, registroDTO.Rol);
+                    if (roleResult.Succeeded)
+                    {
+                        var roles = await userManager.GetRolesAsync(usuario);
+                        var claims = ClaimsHelper.GenerateClaims(usuario, roles);
+                        var token = tokenService.GenerateJWTToken(claims);
+                        usuario.Token = token;
+                        await userManager.UpdateAsync(usuario);
+                        var refreshToken = await tokenService.StoreRefreshTokenAsync(usuario);
+
+                        return Ok(new NuevoUsuarioDTO
+                        {
+                            NombreUsuario = usuario.UserName,
+                            Nombre = usuario.Nombre,
+                            Apellido = usuario.Apellido,
+                            Correo = usuario.Email,
+                            Token = token,
+                            RefreshToken = refreshToken
+                        });
+                    }
+                    else
+                    {
+                        return StatusCode(500, roleResult.Errors);
+                    }
+                }
+                else
+                {
+                    return StatusCode(500, usuarioCreado.Errors);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
 
         [HttpPost("login")]
 

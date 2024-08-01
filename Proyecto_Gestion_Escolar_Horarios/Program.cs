@@ -104,7 +104,7 @@ builder.Services.AddScoped<UserManager<Usuario>>();
 builder.Services.AddScoped<SignInManager<Usuario>>();
 builder.Services.AddScoped<ClaimsHelper>();
 builder.Services.AddScoped<IReporteService, ReporteService>();
-// builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 
 // Configurar Identity
@@ -136,8 +136,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowAllOrigins");
 
+app.UseAuthentication();
 app.UseAuthorization();
-// app.UseAuthentication();
 
 app.UseMiddleware<RefreshTokenMiddleware>();
 

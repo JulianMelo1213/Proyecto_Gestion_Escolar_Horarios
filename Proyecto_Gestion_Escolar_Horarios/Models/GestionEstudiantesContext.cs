@@ -73,7 +73,7 @@ public partial class GestionEstudiantesContext : IdentityDbContext<Usuario>
             };
         modelBuilder.Entity<IdentityRole>().HasData(roles);
 
-        OnModelCreatingPartial(modelBuilder);
+        //OnModelCreatingPartial(modelBuilder);
     }
 
 

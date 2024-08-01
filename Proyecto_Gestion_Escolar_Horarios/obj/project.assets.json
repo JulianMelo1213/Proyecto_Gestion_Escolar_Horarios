@@ -8831,24 +8831,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gusta\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\manny\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
+      "projectUniqueName": "C:\\Users\\manny\\Source\\Repos\\JulianMelo1213\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
       "projectName": "Proyecto_Gestion_Escolar_Horarios",
-      "projectPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
-      "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gusta\\OneDrive\\Escritorio\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
+      "projectPath": "C:\\Users\\manny\\Source\\Repos\\JulianMelo1213\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios.csproj",
+      "packagesPath": "C:\\Users\\manny\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\manny\\Source\\Repos\\JulianMelo1213\\Proyecto_Gestion_Escolar_Horarios\\Proyecto_Gestion_Escolar_Horarios\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\manny\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8856,7 +8851,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "c:\\program files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8946,7 +8940,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,16 +10,14 @@ namespace Proyecto_Gestion_Escolar_Horarios.Helper
         {
             var claims = new List<Claim>
             {
-                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new(ClaimTypes.Name, user.Nombre + " " + user.Apellido),
-                new(ClaimTypes.GivenName, user.UserName),
-                new(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.GivenName, user.Nombre),
+                new Claim(ClaimTypes.Surname, user.Apellido),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email)
             };
 
-            foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             return claims;
         }

@@ -12,8 +12,8 @@ using Proyecto_Gestion_Escolar_Horarios.Models;
 namespace Proyecto_Gestion_Escolar_Horarios.Migrations
 {
     [DbContext(typeof(GestionEstudiantesContext))]
-    [Migration("20240724163626_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240731194313_SeedRoleData")]
+    partial class SeedRoleData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,19 +54,19 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9605affa-cde1-4e10-b484-b5d91bb1a8ce",
+                            Id = "93ed711b-c758-447e-9fa9-d8d1ba4c3184",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "2c73c082-00ac-4987-a9dc-1f23f0417fa7",
+                            Id = "d4789d55-9204-4a20-b8af-0c4de811e16e",
                             Name = "Estudiante",
                             NormalizedName = "ESTUDIANTE"
                         },
                         new
                         {
-                            Id = "7eeebabf-443d-4cff-9888-903755d7ece9",
+                            Id = "81b3c429-effe-4b76-9b71-41e5c6e9c549",
                             Name = "Profesor",
                             NormalizedName = "PROFESOR"
                         });

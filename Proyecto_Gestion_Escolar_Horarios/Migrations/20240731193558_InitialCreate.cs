@@ -377,9 +377,9 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2c73c082-00ac-4987-a9dc-1f23f0417fa7", null, "Estudiante", "ESTUDIANTE" },
-                    { "7eeebabf-443d-4cff-9888-903755d7ece9", null, "Profesor", "PROFESOR" },
-                    { "9605affa-cde1-4e10-b484-b5d91bb1a8ce", null, "Administrador", "ADMINISTRADOR" }
+                    { "428d9b13-0f93-478f-92f4-20c685fcbf87", null, "Profesor", "PROFESOR" },
+                    { "5249f84f-a5cb-4437-8000-0ee8bd778ffe", null, "Estudiante", "ESTUDIANTE" },
+                    { "5ae6e99c-0f8c-4d7c-913e-5658942bdf26", null, "Administrador", "ADMINISTRADOR" }
                 });
 
             migrationBuilder.CreateIndex(

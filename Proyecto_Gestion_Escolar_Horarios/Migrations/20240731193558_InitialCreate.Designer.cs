@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_Gestion_Escolar_Horarios.Models;
 
@@ -11,9 +12,11 @@ using Proyecto_Gestion_Escolar_Horarios.Models;
 namespace Proyecto_Gestion_Escolar_Horarios.Migrations
 {
     [DbContext(typeof(GestionEstudiantesContext))]
-    partial class GestionEstudiantesContextModelSnapshot : ModelSnapshot
+    [Migration("20240731193558_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,19 +54,19 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "93ed711b-c758-447e-9fa9-d8d1ba4c3184",
+                            Id = "5ae6e99c-0f8c-4d7c-913e-5658942bdf26",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "d4789d55-9204-4a20-b8af-0c4de811e16e",
+                            Id = "5249f84f-a5cb-4437-8000-0ee8bd778ffe",
                             Name = "Estudiante",
                             NormalizedName = "ESTUDIANTE"
                         },
                         new
                         {
-                            Id = "81b3c429-effe-4b76-9b71-41e5c6e9c549",
+                            Id = "428d9b13-0f93-478f-92f4-20c685fcbf87",
                             Name = "Profesor",
                             NormalizedName = "PROFESOR"
                         });

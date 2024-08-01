@@ -27,61 +27,6 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
             this.roleManager = roleManager;
         }
 
-        [HttpPost("registro")]
-        public async Task<IActionResult> Registro([FromBody] RegistroDTO registroDTO)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
-
-                var usuario = new Usuario
-                {
-                    UserName = registroDTO.NombreUsuario,
-                    Nombre = registroDTO.Nombre,
-                    Apellido = registroDTO.Apellido,
-                    Email = registroDTO.CorreoElectronico,
-                };
-
-                var usuarioCreado = await userManager.CreateAsync(usuario, registroDTO.Password);
-                if (usuarioCreado.Succeeded)
-                {
-                    var roleResult = await userManager.AddToRoleAsync(usuario, registroDTO.Rol);
-                    if (roleResult.Succeeded)
-                    {
-                        var roles = await userManager.GetRolesAsync(usuario);
-                        var claims = ClaimsHelper.GenerateClaims(usuario, roles);
-                        var token = tokenService.GenerateJWTToken(claims);
-                        var refreshToken = await tokenService.StoreRefreshTokenAsync(usuario);
-
-                        return Ok(new NuevoUsuarioDTO
-                        {
-                            NombreUsuario = usuario.UserName,
-                            Nombre = usuario.Nombre,
-                            Apellido = usuario.Apellido,
-                            Correo = usuario.Email,
-                            Token = token,
-                            RefreshToken = refreshToken
-                        });
-                    }
-                    else
-                    {
-                        return StatusCode(500, roleResult.Errors);
-                    }
-                }
-                else
-                {
-                    return StatusCode(500, usuarioCreado.Errors);
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex);
-            }
-
-        }
 
         [HttpPost("añadir-rol")]
         [Authorize(Roles = "Administrador")]
@@ -94,6 +39,15 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
                 if (user == null)
                 {
                     return NotFound("Usuario no encontrado");
+                }
+
+                foreach (var rol in cambiarRolDTO.Roles)
+                {
+                    var rolExiste = await roleManager.RoleExistsAsync(rol);
+                    if (!rolExiste)
+                    {
+                        return BadRequest($"El rol '{rol}' no existe");
+                    }
                 }
 
                 var currentRoles = await userManager.GetRolesAsync(user);
@@ -111,6 +65,7 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
                 return StatusCode(500, ex);
             }
         }
+
 
         [HttpPost("quitar-rol")]
         [Authorize(Roles = "Administrador")]
@@ -140,6 +95,7 @@ namespace Proyecto_Gestion_Escolar_Horarios.Controllers
                 return StatusCode(500, ex);
             }
         }
+
 
         [HttpGet("roles")]
         [Authorize(Roles = "Administrador")]

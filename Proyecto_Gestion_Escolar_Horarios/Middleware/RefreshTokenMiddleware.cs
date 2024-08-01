@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Proyecto_Gestion_Escolar_Horarios.Models;
 using Proyecto_Gestion_Escolar_Horarios.Services.TokenServices;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Proyecto_Gestion_Escolar_Horarios.Middleware
 {

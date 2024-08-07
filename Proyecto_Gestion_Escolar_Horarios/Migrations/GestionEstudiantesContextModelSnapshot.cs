@@ -51,19 +51,19 @@ namespace Proyecto_Gestion_Escolar_Horarios.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "93ed711b-c758-447e-9fa9-d8d1ba4c3184",
+                            Id = "caf07fe4-2bc2-4bdf-a893-739702193dbb",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "d4789d55-9204-4a20-b8af-0c4de811e16e",
+                            Id = "aea46cfa-36b8-4100-bf28-a7bc8524081a",
                             Name = "Estudiante",
                             NormalizedName = "ESTUDIANTE"
                         },
                         new
                         {
-                            Id = "81b3c429-effe-4b76-9b71-41e5c6e9c549",
+                            Id = "c5403fdd-7c7e-4bc3-bbad-d6b47c2b64f9",
                             Name = "Profesor",
                             NormalizedName = "PROFESOR"
                         });
